@@ -1,19 +1,25 @@
-name: 构建阿里云容器镜像
+name: 远浅的Happy Action
 
 on: push
 
 jobs:
-  test:
-    name: CheckOut
+  build:
+    name: 构建&&推送阿里云镜像
     runs-on: ubuntu-latest
     steps:
       - name: "复制文件"
         uses: actions/checkout@v1
       - name: "列出文件"
         run: ls
-      - name: "打包推送镜像"
+      - name: "容器构建"
         run: |
           docker login --username=${{ secrets.ALIYUN_DOCKER_NAME }} registry.cn-hongkong.aliyuncs.com --password=${{ secrets.ALIYUN_DOCKER_PASS }}
           docker build -t happy:latest . 
           docker tag happy:latest registry.cn-hongkong.aliyuncs.com/happysooner/action:latest
           docker push registry.cn-hongkong.aliyuncs.com/happysooner/action:latest
+      - name: "构建失败 - 通知远浅同志"
+        if: failure()
+        run: curl ${{ secrets.SEND_MAIL_API }} -d '{"text":"happysooner action 构建失败", "desc":"构建失败啦嘤嘤嘤 https://github.com/unliar/happysooner-github-actions/actions","to":"${{ secrets.EMAIL }}"}'
+      - name: "构建成功 - 通知hook"
+        if: success()
+        run: curl ${{ secrets.SEND_MAIL_API }} -d '{"text":"happysooner action 构建成功!", "desc":"撒花","to":"${{ secrets.EMAIL }}"}'
