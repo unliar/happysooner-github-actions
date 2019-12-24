@@ -13,7 +13,7 @@ jobs:
         run: ls
       - name: "容器构建"
         run: |
-          docker loginx --username=${{ secrets.ALIYUN_DOCKER_NAME }} registry.cn-hongkong.aliyuncs.com --password=${{ secrets.ALIYUN_DOCKER_PASS }}
+          docker login --username=${{ secrets.ALIYUN_DOCKER_NAME }} registry.cn-hongkong.aliyuncs.com --password=${{ secrets.ALIYUN_DOCKER_PASS }}
           docker build -t happy:latest . 
           docker tag happy:latest registry.cn-hongkong.aliyuncs.com/happysooner/action:latest
           docker push registry.cn-hongkong.aliyuncs.com/happysooner/action:latest
