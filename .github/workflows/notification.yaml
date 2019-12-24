@@ -11,3 +11,6 @@ jobs:
         uses: actions/checkout@v1
       - name: "列出文件"
         run: ls
+      - name: "打包推送镜像"
+        run: |
+          docker login --username=${{ secrets.ALIYUN_DOCKER_NAME }} registry.cn-hongkong.aliyuncs.com --password=${{ secrets.ALIYUN_DOCKER_PASS }}
