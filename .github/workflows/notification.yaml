@@ -9,5 +9,5 @@ jobs:
     steps:
       - name: "复制文件"
         uses: actions/checkout@v1
-        run: |
-          ls
+      - name: "列出文件"
+        run: ls
