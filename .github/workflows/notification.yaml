@@ -9,4 +9,4 @@ jobs:
     steps:
       - name: "测试"
         run: |
-          echo "啊哈"
+          ls
