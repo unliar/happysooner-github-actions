@@ -4,6 +4,7 @@ on: push
 
 jobs:
   build:
+    name: 测试服务
     runs-on: ubuntu-latest
     steps:
       - name: 打包镜像
