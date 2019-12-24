@@ -19,7 +19,6 @@ jobs:
           docker push registry.cn-hongkong.aliyuncs.com/happysooner/action:latest
       - name: "构建失败 - 通知远浅同志"
         if: failure()
-        run: curl -X POST -d '{"text":"happysooner action 构建失败", "desp":"构建失败啦嘤嘤嘤 https://github.com/unliar/happysooner-github-actions/actions","to":"${{ secrets.EMAIL }}"}' ${{ secrets.SEND_MAIL_API }}
-      - name: "构建成功 - 通知hook"
+        run: curl -X POST ${{ secrets.SEND_MAIL_API }} -d '{"text":"happysooner action 构建失败", "desp":"构建失败啦嘤嘤嘤 https://github.com/unliar/happysooner-github-actions/actions","to":"${{ secrets.EMAIL }}"}' 
         if: success()
-        run: curl -X POST -d '{"text":"happysooner action 构建成功!", "desp":"撒花","to":"${{ secrets.EMAIL }}"}' ${{ secrets.SEND_MAIL_API }}
+        run: curl -X POST ${{ secrets.SEND_MAIL_API }} -d '{"text":"happysooner action 构建成功!", "desp":"撒花","to":"${{ secrets.EMAIL }}"}' 
