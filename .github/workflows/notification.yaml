@@ -19,7 +19,7 @@ jobs:
           docker push registry.cn-hongkong.aliyuncs.com/happysooner/action:latest
       - name: "构建失败 - 通知远浅排查问题"
         if: failure()
-        run: curl -H "Content-Type:application/json" -X POST ${{ secrets.SEND_MAIL_API }} -d '{"text":"$GITHUB_REPOSITORY 构建失败", "desp":"构建失败啦嘤嘤嘤 https://github.com/unliar/happysooner-github-actions/actions","to":"${{ secrets.EMAIL }}"}'
+        run: curl -H "Content-Type:application/json" -X POST ${{ secrets.SEND_MAIL_API }} -d '{"text":"${{ GITHUB_REPOSITORY }} 构建失败", "desp":"构建失败啦嘤嘤嘤 https://github.com/unliar/happysooner-github-actions/actions","to":"${{ secrets.EMAIL }}"}'
       - name: "构建成功 - 通知集群更新服务"
         if: success()
-        run: curl -H "Content-Type:application/json" -X POST ${{ secrets.SEND_MAIL_API }} -d '{"text":"$GITHUB_REPOSITORY 构建成功~!", "desp":"集群开始服务更新~","to":"${{ secrets.EMAIL }}"}'
+        run: curl -H "Content-Type:application/json" -X POST ${{ secrets.SEND_MAIL_API }} -d '{"text":"${{ GITHUB_REPOSITORY }} 构建成功~!", "desp":"集群开始服务更新~","to":"${{ secrets.EMAIL }}"}'
