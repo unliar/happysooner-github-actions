@@ -6,3 +6,7 @@ jobs:
   test:
     name: 测试服务
     runs-on: ubuntu-latest
+    steps:
+      - name: "测试"
+        run: |
+          echo "啊哈"
