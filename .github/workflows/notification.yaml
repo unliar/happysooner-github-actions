@@ -3,10 +3,8 @@ name: 构建阿里云容器镜像
 on: push
 
 jobs:
-  build:
+  test:
     name: 测试服务
     runs-on: ubuntu-latest
     steps:
-      - name: 打包镜像
-        uses: actions/checkout@master
-        run: echo "Hello"
+      - name: "test action"
