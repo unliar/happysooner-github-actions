@@ -14,3 +14,6 @@ jobs:
       - name: "打包推送镜像"
         run: |
           docker login --username=${{ secrets.ALIYUN_DOCKER_NAME }} registry.cn-hongkong.aliyuncs.com --password=${{ secrets.ALIYUN_DOCKER_PASS }}
+          docker buid -t happy:latest . 
+          docker tag happy:latest registry.cn-hongkong.aliyuncs.com/happysooner/action:latest
+          docker push registry.cn-hongkong.aliyuncs.com/happysooner/action:latest
