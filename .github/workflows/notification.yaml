@@ -4,9 +4,10 @@ on: push
 
 jobs:
   test:
-    name: 测试服务
+    name: CheckOut
     runs-on: ubuntu-latest
     steps:
-      - name: "测试"
+      - name: "复制文件"
+        uses: actions/checkout@v1
         run: |
           ls
