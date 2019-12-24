@@ -1,4 +1,4 @@
-name: 邮件推送服务
+name: 构建阿里云容器镜像
 
 on: push
 
@@ -6,7 +6,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - continue-on-error: false
       - name: 打包镜像
-        run: docker build .
+        uses: actions/checkout@master
+        run: echo "Hello"
