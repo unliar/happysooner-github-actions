@@ -11,7 +11,7 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            "[Github Link](https://github.com/${{ github.repository }})
+            [Github Link](https://github.com/${{ github.repository }})
             > test md
-            "
+
           format: "markdown"
